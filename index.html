@@ -1,76 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QueenAce Payment</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QueenAce Deposit</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
+      background-color: #0e0e0e;
+      color: white;
+      font-family: Arial, sans-serif;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f6f9fc;
+      height: 100vh;
+      margin: 0;
     }
 
-    .payment-container {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
+    h1 {
+      color: #ffcc00;
     }
 
-    h2 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
       font-size: 16px;
-      color: #555;
     }
 
-    input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+    input {
+      width: 200px;
     }
 
     button {
-      background-color: #4a90e2;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 6px;
+      background-color: #ffcc00;
+      color: #000;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #3a78c2;
+      background-color: #e6b800;
     }
   </style>
 </head>
 <body>
-  <div class="payment-container">
-    <h2>Deposit to QueenAce 🏛️</h2>
-    <form action="https://your-stripe-server.com/charge" method="POST">
-      <label>Enter Amount ($):</label>
-      <input type="number" name="amount" required min="1" step="1" placeholder="e.g. 10" />
-      <button type="submit">💸 Pay Now</button>
-    </form>
-  </div>
+  <h1>QueenAce Deposit 💸</h1>
+  <input type="number" id="amount" placeholder="Enter amount in USD" />
+  <button id="checkout-button">Deposit Now</button>
+
+  <script>
+    const checkoutButton = document.getElementById('checkout-button');
+
+    checkoutButton.addEventListener('click', () => {
+      const amount = document.getElementById('amount').value;
+      if (!amount || amount <= 0) {
+        alert("Please enter a valid amount");
+        return;
+      }
+
+      fetch("https://e2718f9a-85d3-4744-b02e-0017fc13c0bf-00-zq8szeuko0hs.sisko.replit.dev/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: amount * 100 })  // Stripe expects amount in cents
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.id) {
+          window.location.href = `https://checkout.stripe.com/pay/${data.id}`;
+        } else {
+          alert("Failed to initiate checkout");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Error initiating payment");
+      });
+    });
+  </script>
 </body>
 </html>
