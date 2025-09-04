@@ -6,77 +6,86 @@
   <title>QueenAce Deposit</title>
   <style>
     body {
-      background-color: #0e0e0e;
-      color: white;
-      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: gold;
+      font-family: sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
+      text-align: center;
     }
-
     h1 {
-      color: #ffcc00;
+      margin-bottom: 20px;
+      font-size: 2rem;
     }
-
-    input, button {
-      padding: 12px;
-      margin: 10px;
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      width: 200px;
+      margin-bottom: 20px;
+      border: 1px solid gold;
+      border-radius: 5px;
+      background-color: #111;
+      color: gold;
+    }
+    button {
+      background-color: gold;
+      color: black;
+      padding: 10px 20px;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
-    }
-
-    input {
-      width: 200px;
-    }
-
-    button {
-      background-color: #ffcc00;
-      color: #000;
+      font-size: 1.1rem;
       cursor: pointer;
     }
-
     button:hover {
-      background-color: #e6b800;
+      background-color: #ffcc00;
     }
   </style>
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
+
   <h1>QueenAce Deposit 💸</h1>
   <input type="number" id="amount" placeholder="Enter amount in USD" />
   <button id="checkout-button">Deposit Now</button>
 
   <script>
-    const checkoutButton = document.getElementById('checkout-button');
+    const stripe = Stripe("pk_test_51S1cyT1VWPIQkRPkmDKS9BRJBaAtZkz7FNOr6JfMfNk4BfvgvFMqnhZ2t0m0u4JgUhjTp7GBw1IgFA8JK5bOCn6c00MtEtfPty");
 
-    checkoutButton.addEventListener('click', () => {
-      const amount = document.getElementById('amount').value;
-      if (!amount || amount <= 0) {
-        alert("Please enter a valid amount");
-        return;
-      }
+    document.addEventListener("DOMContentLoaded", function () {
+      const checkoutButton = document.getElementById("checkout-button");
 
-      fetch("https://e2718f9a-85d3-4744-b02e-0017fc13c0bf-00-zq8szeuko0hs.sisko.replit.dev/create-checkout-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: amount * 100 })  // Stripe expects amount in cents
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.id) {
-          window.location.href = `https://checkout.stripe.com/pay/${data.id}`;
-        } else {
-          alert("Failed to initiate checkout");
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Error initiating payment");
+      checkoutButton.addEventListener("click", function () {
+        const amount = document.getElementById("amount").value;
+
+        fetch('https://e2718f9a-85d3-4744-b02e-0017fc13c0bf-00-zq8szeuko0hs.sisko.replit.dev/create-checkout-session', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ amount: amount })
+        })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Failed to initiate payment.");
+          }
+          return response.json();
+        })
+        .then(function (session) {
+          return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error:", error);
+          alert("Error initiating payment");
+        });
       });
     });
   </script>
