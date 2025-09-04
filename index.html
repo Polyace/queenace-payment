@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QueenAce Payment</title>
+</head>
+<body>
+  <h2>Deposit to QueenAce 🎰</h2>
+  <form action="https://your-stripe-server.com/create-checkout-session" method="POST">
+    <label>Enter Amount ($):</label>
+    <input type="number" name="amount" required min="1" step="0.01" />
+    <br><br>
+    <button type="submit">Pay Now</button>
+  </form>
+</body>
+</html>
