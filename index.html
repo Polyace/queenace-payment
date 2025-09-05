@@ -53,7 +53,8 @@
   <button id="checkout-button">Deposit Now</button>
 
   <script>
-    const stripe = Stripe("pk_test_51S1cyT1VWPIQkRPkmDKS9BRJBaAtZkz7FNOr6JfMfNk4BfvgvFMqnhZ2t0m0u4JgUhjTp7GBw1IgFA8JK5bOCn6c00MtEtfPty");
+    // ✅ LIVE Stripe Key
+    const stripe = Stripe("pk_live_51S1cyT1VWPIQkRPkblySYmHz2V4LBjJ2BvVRJJhW8xl2ev4efafg3IUbsayFGNkhqiRjsw29hJvIw4MhKigq1KWa002Z1AQwCw");
 
     document.addEventListener("DOMContentLoaded", function () {
       const checkoutButton = document.getElementById("checkout-button");
@@ -66,7 +67,7 @@
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ amount: amount })
+          body: JSON.stringify({ amount: parseFloat(amount) * 100 }) // amount in cents
         })
         .then(function (response) {
           if (!response.ok) {
