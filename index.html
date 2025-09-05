@@ -53,7 +53,6 @@
   <button id="checkout-button">Deposit Now</button>
 
   <script>
-    // ✅ LIVE Stripe Key
     const stripe = Stripe("pk_live_51S1cyT1VWPIQkRPkblySYmHz2V4LBjJ2BvVRJJhW8xl2ev4efafg3IUbsayFGNkhqiRjsw29hJvIw4MhKigq1KWa002Z1AQwCw");
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -62,28 +61,26 @@
       checkoutButton.addEventListener("click", function () {
         const amount = document.getElementById("amount").value;
 
-        fetch('https://e2718f9a-85d3-4744-b02e-0017fc13c0bf-00-zq8szeuko0hs.sisko.replit.dev/create-checkout-session', {
+        fetch("https://queenace.replit.app/create-checkout-session", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ amount: parseFloat(amount) * 100 }) // amount in cents
+          body: JSON.stringify({ amount: parseFloat(amount) * 100 }) // USD cents
         })
-        .then(function (response) {
+        .then(response => {
           if (!response.ok) {
             throw new Error("Failed to initiate payment.");
           }
           return response.json();
         })
-        .then(function (session) {
-          return stripe.redirectToCheckout({ sessionId: session.id });
-        })
-        .then(function (result) {
+        .then(session => stripe.redirectToCheckout({ sessionId: session.id }))
+        .then(result => {
           if (result.error) {
             alert(result.error.message);
           }
         })
-        .catch(function (error) {
+        .catch(error => {
           console.error("Error:", error);
           alert("Error initiating payment");
         });
