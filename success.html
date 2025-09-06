@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Successful</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .checkmark {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #1e1e1e;
+      border: 3px solid #4caf50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pop 0.6s ease-out forwards;
+    }
+
+    .checkmark::after {
+      content: '✓';
+      font-size: 48px;
+      color: #4caf50;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      80% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 20px;
+      color: #4caf50;
+    }
+
+    p {
+      font-size: 18px;
+      color: #ccc;
+      margin: 10px 0 30px;
+    }
+
+    .footer {
+      font-size: 16px;
+      color: #999;
+      position: absolute;
+      bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="checkmark"></div>
+  <h1>Payment Successful</h1>
+  <p>Thank you</p>
+  <div class="footer">PolyAce / QueenAce Team</div>
+</body>
+</html>
