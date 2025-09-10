@@ -1,91 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QueenAce Deposit</title>
   <style>
     body {
-      background-color: #000;
-      color: gold;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1640340432176-1c1f6db15a8d?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      width: 350px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #FFD700;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
       text-align: center;
     }
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
-    input {
-      padding: 10px;
-      font-size: 1rem;
-      width: 200px;
-      margin-bottom: 20px;
-      border: 1px solid gold;
-      border-radius: 5px;
-      background-color: #111;
-      color: gold;
-    }
+
     button {
-      background-color: gold;
-      color: black;
-      padding: 10px 20px;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #FFD700, #FFA500);
       border: none;
-      border-radius: 5px;
-      font-size: 1.1rem;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
+      transition: 0.3s;
     }
+
     button:hover {
-      background-color: #ffcc00;
+      background: linear-gradient(90deg, #FFA500, #FFD700);
+      transform: scale(1.05);
+    }
+
+    .methods {
+      margin-top: 15px;
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .methods img {
+      height: 22px;
+      margin: 0 6px;
+      vertical-align: middle;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 11px;
+      opacity: 0.7;
     }
   </style>
-  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-
-  <h1>QueenAce Deposit 💸</h1>
-  <input type="number" id="amount" placeholder="Enter amount in USD" />
-  <button id="checkout-button">Deposit Now</button>
-
-  <script>
-    const stripe = Stripe("pk_live_51S1cyT1VWPIQkRPkblySYmHz2V4LBjJ2BvVRJJhW8xl2ev4efafg3IUbsayFGNkhqiRjsw29hJvIw4MhKigq1KWa002Z1AQwCw");
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const checkoutButton = document.getElementById("checkout-button");
-
-      checkoutButton.addEventListener("click", function () {
-        const amount = document.getElementById("amount").value;
-
-        fetch("https://queenace.replit.app/create-checkout-session", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ amount: parseFloat(amount) * 100 }) // USD cents
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Failed to initiate payment.");
-          }
-          return response.json();
-        })
-        .then(session => stripe.redirectToCheckout({ sessionId: session.id }))
-        .then(result => {
-          if (result.error) {
-            alert(result.error.message);
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          alert("Error initiating payment");
-        });
-      });
-    });
-  </script>
+  <div class="container">
+    <h1>💳 QueenAce Deposit</h1>
+    <form id="payment-form">
+      <label for="amount">Enter Deposit Amount (USD)</label>
+      <input type="number" id="amount" name="amount" min="5" max="500" required placeholder="e.g. 50">
+      <button type="submit">Proceed to Checkout</button>
+    </form>
+    <div class="methods">
+      Accepted: 
+      <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+      <img src="https://img.icons8.com/color/48/000000/mastercard.png"/>
+      <img src="https://img.icons8.com/color/48/000000/cash-app.png"/>
+      <img src="https://img.icons8.com/color/48/000000/apple-pay.png"/>
+      <img src="https://img.icons8.com/color/48/000000/google-pay.png"/>
+    </div>
+    <div class="footer">
+      QueenAce © 2025 | Secure Payments
+    </div>
+  </div>
 </body>
 </html>
