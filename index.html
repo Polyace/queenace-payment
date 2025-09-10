@@ -7,52 +7,67 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #fff;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       overflow: hidden;
-      position: relative;
     }
 
-    /* Floating dots animation */
+    /* Floating background dots */
     .dot {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #facc15;
+      width: 12px;
+      height: 12px;
+      background: #FFD700;
       border-radius: 50%;
-      animation: float 15s infinite ease-in-out;
+      animation: float 12s infinite;
       opacity: 0.6;
     }
+    .dot:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+    .dot:nth-child(2) { top: 40%; left: 80%; animation-delay: 3s; }
+    .dot:nth-child(3) { top: 70%; left: 30%; animation-delay: 6s; }
+    .dot:nth-child(4) { top: 20%; left: 60%; animation-delay: 9s; }
+
     @keyframes float {
-      0% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-50px) translateX(30px); }
-      100% { transform: translateY(0) translateX(0); }
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(-20px); opacity: 1; }
     }
 
+    /* Deposit box */
     .deposit-box {
       background: #2c2c2c;
       padding: 30px;
       border-radius: 15px;
-      width: 90%;
-      max-width: 350px; /* reduced width for better spacing */
+      width: 80%;
+      max-width: 320px;        /* keeps box narrower */
       text-align: center;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      z-index: 2; /* stays above dots */
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
-      color: #facc15;
+      color: #FFD700;
       margin-bottom: 20px;
+      font-size: 1.6em;
     }
 
     input {
+      width: 100%;
       padding: 12px;
-      width: 80%;
       margin-bottom: 20px;
       border: none;
       border-radius: 8px;
@@ -61,81 +76,84 @@
     }
 
     button {
-      background: linear-gradient(90deg, #facc15, #f59e0b);
-      color: black;
+      background: linear-gradient(45deg, #FFD700, #FFA500);
       border: none;
-      padding: 12px 20px;
+      padding: 12px;
       border-radius: 8px;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 18px;
-      width: 85%;
+      width: 100%;
+      transition: 0.3s;
     }
 
     button:hover {
-      background: linear-gradient(90deg, #f59e0b, #facc15);
+      transform: scale(1.05);
     }
 
-    .footer {
+    .payment-icons {
       margin-top: 15px;
-      font-size: 12px;
+      font-size: 13px;
       color: #bbb;
     }
 
-    .accepted-icons {
-      margin-top: 15px;
-      font-size: 14px;
-      color: white;
-    }
-    .accepted-icons img {
+    .payment-icons img {
       width: 40px;
       margin: 5px;
+    }
+
+    footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <!-- floating dots -->
-  <div class="dot" style="top: 20%; left: 10%; animation-duration: 12s;"></div>
-  <div class="dot" style="top: 70%; left: 20%; animation-duration: 18s;"></div>
-  <div class="dot" style="top: 40%; left: 80%; animation-duration: 16s;"></div>
-  <div class="dot" style="top: 85%; left: 60%; animation-duration: 20s;"></div>
-  <div class="dot" style="top: 10%; left: 50%; animation-duration: 14s;"></div>
+  <!-- Animated background dots -->
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
 
+  <!-- Deposit Box -->
   <div class="deposit-box">
     <h1>💳 QueenAce Deposit</h1>
-    <input type="number" id="amount" placeholder="Enter Deposit Amount (USD)" />
-    <br>
-    <button id="checkout-btn">Proceed to Checkout</button>
-    <div class="accepted-icons">
-      Accepted:
+    <input type="number" id="amount" placeholder="Enter Deposit Amount (USD)" min="5">
+    <button onclick="redirectToCheckout()">Proceed to Checkout</button>
+
+    <div class="payment-icons">
+      Accepted: <br>
       <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
       <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard">
-      <img src="https://img.icons8.com/fluency/48/cash-app.png" alt="CashApp">
+      <img src="https://img.icons8.com/color/48/cash-app.png" alt="CashApp">
+      <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay">
       <img src="https://img.icons8.com/color/48/google-pay.png" alt="Google Pay">
-      <img src="https://img.icons8.com/ios-filled/50/apple-pay.png" alt="Apple Pay">
     </div>
-    <div class="footer">QueenAce © 2025 | Secure Payments</div>
+
+    <footer>QueenAce © 2025 | Secure Payments</footer>
   </div>
 
   <script src="https://js.stripe.com/v3/"></script>
   <script>
-    const checkoutBtn = document.getElementById("checkout-btn");
-    checkoutBtn.addEventListener("click", async () => {
+    async function redirectToCheckout() {
       const amount = document.getElementById("amount").value * 100; // cents
-      if (!amount || amount < 100) {
-        alert("Please enter a valid amount (min $1).");
+      if (!amount || amount < 500) {
+        alert("Minimum deposit is $5");
         return;
       }
 
       const response = await fetch("https://queenace.replit.app/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount }),
+        body: JSON.stringify({ amount })
       });
 
       const session = await response.json();
       const stripe = Stripe("pk_live_51S1cyT1VWPIQkRPkblySYmHz2V4LBjJ2BvVRJJhW8xl2ev4efafg3IUbsayFGNkhqiRjsw29hJvIw4MhKigq1KWa002Z1AQwCw");
       stripe.redirectToCheckout({ sessionId: session.id });
-    });
+    }
   </script>
 </body>
 </html>
