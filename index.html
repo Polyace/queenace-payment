@@ -109,7 +109,7 @@
         return;
       }
 
-      // ✅ Updated to your custom backend domain
+      // ✅ Always point to your backend on polypay.digital
       const response = await fetch("https://polypay.digital/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -117,8 +117,9 @@
       });
 
       const session = await response.json();
-      const stripe = Stripe("pk_live_51S1cyT1VWPIQkRPkblySYmHz2V4LBjJ2BvVRJJhW8xl2ev4efafg3IUbsayFGNkhqiRjsw29hJvIw4MhKigq1KWa002Z1AQwCw");
-      await stripe.redirectToCheckout({ sessionId: session.id });
+
+      // ✅ This ensures Stripe uses your verified custom domain
+      window.location.href = session.url;
     });
   </script>
 </body>
