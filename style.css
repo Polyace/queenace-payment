@@ -1,3 +1,4 @@
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -5,113 +6,108 @@
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #0d0d0d;
-  color: #ffffff;
+  color: #f2f2f2;
+  line-height: 1.6;
+  padding-bottom: 80px;
 }
 
 /* Header */
-.header {
-  background-color: #000000;
-  padding: 20px;
-  border-bottom: 1px solid #222;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  animation: fadeInDown 1.2s ease;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #f5c518;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links li a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-  color: #f5c518;
-}
-
-/* Hero Section */
-.hero {
+.main-header {
+  background: linear-gradient(to right, #111, #1a1a1a);
   text-align: center;
-  padding: 80px 20px 40px;
-  background: radial-gradient(circle at center, #1a1a1a, #000000);
+  padding: 40px 20px;
 }
 
-.hero h1 {
-  font-size: 2.4rem;
+.main-header h1 {
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #f5c518;
-  animation: fadeIn 1s ease;
 }
 
-.hero h1 span {
-  color: #ffffff;
+.main-header h1 span {
+  color: #FFD700;
 }
 
-.hero p {
-  margin: 20px 0;
-  color: #ccc;
+.main-header p {
+  margin-top: 10px;
   font-size: 1.1rem;
+  color: #ccc;
 }
 
 .hero-buttons {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 15px 25px;
-  margin: 10px;
-  font-weight: bold;
-  border-radius: 30px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  display: inline-block;
 }
 
-.btn.deposit {
-  background-color: #f5c518;
+.primary {
+  background-color: #FFD700;
   color: #000;
+  box-shadow: 0 0 15px #FFD700;
 }
 
-.btn.chat {
-  border: 2px solid #f5c518;
-  color: #f5c518;
+.secondary {
+  background-color: transparent;
+  border: 2px solid #FFD700;
+  color: #FFD700;
 }
 
-.btn.deposit:hover {
-  background-color: #e0b909;
+.btn:hover {
+  transform: scale(1.05);
 }
 
-.btn.chat:hover {
-  background-color: #f5c518;
-  color: #000;
+/* Navigation */
+.main-nav {
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(255, 215, 0, 0.1);
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "";
+  height: 2px;
+  background: #FFD700;
+  width: 0;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s ease;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
 }
 
 /* Games Section */
 .games-section {
-  padding: 50px 20px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 }
@@ -120,49 +116,38 @@ body {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 30px;
-  color: #f5c518;
+  color: #FFD700;
 }
 
-.games-grid {
+.game-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
-  padding: 0 10px;
 }
 
 .game-card {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 12px;
+  background: #1a1a1a;
+  border: 2px solid #333;
   padding: 20px;
+  border-radius: 10px;
   text-align: center;
-  font-weight: bold;
-  color: #f5c518;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.05);
 }
 
 .game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(245, 197, 24, 0.3);
+  background-color: #FFD700;
+  color: #000;
+  transform: scale(1.05);
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #111;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #888;
 }
