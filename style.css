@@ -1,155 +1,116 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #f8f8f8;
-  color: #121212;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #1f1f1f, #2a2a2a);
+  color: #fff;
   text-align: center;
-  scroll-behavior: smooth;
+  padding: 0;
 }
 
-.hero-bg {
-  position: relative;
-  background: linear-gradient(135deg, #1f1f1f, #292929);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.hero {
+  padding: 60px 20px 30px;
+  background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to right, #0f0f0f, #1c1c1c);
+  background-blend-mode: overlay;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/connected.png');
-  opacity: 0.08;
-  z-index: 1;
+.hero h1 {
+  font-size: 2.2rem;
+  color: #FFD700;
+  margin-bottom: 10px;
 }
 
-.hero-container {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
-  max-width: 700px;
-}
-
-.title {
-  font-size: 38px;
-  color: #f5b041;
-  font-weight: 800;
-}
-
-.title span {
+.hero h1 span {
   color: white;
+  font-weight: bold;
 }
 
-.subtitle {
-  font-size: 18px;
-  color: #e0e0e0;
-  margin-top: 10px;
-  margin-bottom: 30px;
+.hero p {
+  font-size: 1rem;
+  color: #dcdcdc;
+  margin-bottom: 20px;
 }
 
-.button-group {
+.hero-buttons {
   display: flex;
   justify-content: center;
+  gap: 15px;
   flex-wrap: wrap;
-  gap: 20px;
 }
 
 .btn {
   text-decoration: none;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 50px;
+  transition: 0.3s;
   font-size: 16px;
-  transition: 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.btn.primary {
-  background: #f5b041;
-  color: #121212;
+.btn.deposit {
+  background-color: #FFD700;
+  color: #111;
+  box-shadow: 0 0 15px #FFD70055;
 }
 
-.btn.primary:hover {
-  background: #e2a129;
-  box-shadow: 0 4px 16px rgba(245, 176, 65, 0.6);
+.btn.chat {
+  background-color: transparent;
+  border: 2px solid #FFD700;
+  color: #FFD700;
 }
 
-.btn.secondary {
-  background: #fff;
-  color: #121212;
-  border: 2px solid #f5b041;
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
 }
 
-.btn.secondary:hover {
-  background: #f5b041;
-  color: white;
-  box-shadow: 0 4px 12px rgba(245, 176, 65, 0.4);
-}
-
-/* Menu */
-.menu {
+.nav {
+  background-color: #151515;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 14px;
-  background-color: #f0f0f0;
-  padding: 20px;
+  padding: 15px 10px;
+  gap: 20px;
 }
 
-.menu a {
+.nav a {
+  color: #ddd;
   text-decoration: none;
-  color: #121212;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 6px;
-  background-color: #e4e4e4;
-  transition: 0.2s ease;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.menu a:hover {
-  background-color: #f5b041;
-  color: white;
+.nav a:hover {
+  color: #FFD700;
 }
 
-/* Sections */
-.section {
-  padding: 60px 20px;
-  max-width: 750px;
-  margin: auto;
+.games {
+  padding: 40px 20px;
 }
 
-.section h2 {
-  font-size: 26px;
-  color: #f5b041;
-  margin-bottom: 12px;
+.games h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #FFD700;
 }
 
-.section p {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
-}
-
-.section ul {
+.games ul {
   list-style: none;
   padding: 0;
 }
 
-.section ul li {
-  font-size: 18px;
-  margin: 8px 0;
+.games li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  animation: fadeInUp 0.5s ease forwards;
 }
 
-/* Footer */
-footer {
-  background-color: #121212;
-  color: #f8f8f8;
-  padding: 40px 20px;
-  font-size: 14px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
