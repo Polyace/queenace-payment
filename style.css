@@ -1,0 +1,112 @@
+css
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #1a1a1a, #121212);
+  color: #f4f4f4;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-image: url('https://images.unsplash.com/photo-1611171711917-208dd5b2d7e4'); /* replace with AI-generated bg later */
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.hero .highlight {
+  color: gold;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn.deposit {
+  background-color: gold;
+  color: #000;
+  font-weight: bold;
+}
+
+.btn.chat {
+  background-color: #ff4444;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.nav-section {
+  background: #222;
+  padding: 1rem;
+  text-align: center;
+}
+
+.nav-section a {
+  color: #ddd;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-section a:hover {
+  color: gold;
+}
+
+.games {
+  padding: 2rem;
+  background: #111;
+}
+
+.games h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: gold;
+}
+
+.games ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.games li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #000;
+  color: #777;
+  font-size: 0.9rem;
+}
