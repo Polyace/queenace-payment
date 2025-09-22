@@ -3,52 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QueenAce - Online Casino</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Online Casino</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00ffcc;
+    }
+
+    nav {
+      margin: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: #00ffcc;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #00ccaa;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+
+    .badge {
+      background: #2a2a2a;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      border: 1px solid #00ffcc;
+    }
+
+    .section {
+      max-width: 800px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #1a1a1a;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <h1>👑 Welcome to <span>QueenAce World</span></h1>
-      <p>Your premium online casino for instant deposits and 24/7 live support.</p>
-      <div class="hero-buttons">
-        <a href="#" class="btn primary">💰 Deposit Now</a>
-        <a href="#" class="btn secondary">💬 Live Chat</a>
-      </div>
-    </div>
+
+  <header>
+    <h1>🎰 Welcome to QuickPlay Casino</h1>
+    <nav>
+      <a class="btn" href="#">💰 Deposit Here</a>
+      <a class="btn" href="#">💬 Live Chat</a>
+    </nav>
   </header>
 
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Games</a></li>
-      <li><a href="#">Cashout</a></li>
-      <li><a href="#">Reviews</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+  <section class="badges">
+    <div class="badge">⚡ Instant Cashout</div>
+    <div class="badge">🔒 Secure Payments</div>
+    <div class="badge">🕐 24/7 Available</div>
+    <div class="badge">🎲 Trusted Online Gaming</div>
+  </section>
 
-  <section class="games-section">
-    <h2>🔥 Popular Games</h2>
-    <div class="game-list">
-      <div class="game-card">Fire Kirin</div>
-      <div class="game-card">Mr All in One</div>
-      <div class="game-card">Milkyway</div>
-      <div class="game-card">Orion Stars</div>
-      <div class="game-card">Vblink</div>
-      <div class="game-card">Ultra Panda</div>
-      <div class="game-card">Game Vault</div>
-      <div class="game-card">Panda Master</div>
-      <div class="game-card">Juwa</div>
-      <div class="game-card">Sirius</div>
-      <div class="game-card">Vegas Sweep</div>
-      <div class="game-card">Cash Machine</div>
-      <div class="game-card">Mafia</div>
-    </div>
+  <section class="section">
+    <h2>About Us</h2>
+    <p>
+      QuickPlay Casino offers a premium online gaming experience with instant cashouts, 
+      secure deposits, and live chat support 24/7. We are trusted by players worldwide 
+      and committed to fast, fair, and fun entertainment.
+    </p>
   </section>
 
   <footer>
-    <p>© 2025 QueenAce. All rights reserved.</p>
+    &copy; 2025 QuickPlay Casino. All Rights Reserved.
   </footer>
+
 </body>
 </html>
