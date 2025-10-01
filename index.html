@@ -57,9 +57,8 @@
 
     .slider {
       display: flex;
-      overflow-x: auto;
+      overflow-x: hidden;
       scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
       gap: 1rem;
       padding: 1rem 0;
       scroll-behavior: smooth;
@@ -70,13 +69,14 @@
     }
 
     .slide-box {
-      flex: 0 0 80%;
+      flex: 0 0 100%;
       scroll-snap-align: center;
       background-color: #121441;
       border: 2px solid #ffd700;
       border-radius: 12px;
-      padding: 1rem;
-      font-size: 1rem;
+      padding: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
     }
 
     .about, .why-choose {
@@ -130,9 +130,9 @@
     <h2>Our Features</h2>
     <div class="slider" id="featureSlider">
       <div class="slide-box">⚡ Instant Cashout</div>
-      <div class="slide-box">🔐 Secure Payments</div>
-      <div class="slide-box">🕒 24/7 Available</div>
-      <div class="slide-box">🎲 Trusted Online Gaming</div>
+      <div class="slide-box">🔐 Secured Payment</div>
+      <div class="slide-box">🕒 Available on 24/7</div>
+      <div class="slide-box">🎲 Trusted Platform</div>
     </div>
   </section>
 
@@ -173,21 +173,16 @@
 
   <script>
     const slider = document.getElementById('featureSlider');
-    let scrollAmount = 0;
+    const slides = slider.children;
+    let currentIndex = 0;
 
     setInterval(() => {
-      const slideWidth = slider.children[0].offsetWidth + 16; // Including gap
-      scrollAmount += slideWidth;
-
-      if (scrollAmount >= slider.scrollWidth - slider.offsetWidth) {
-        scrollAmount = 0;
-      }
-
+      currentIndex = (currentIndex + 1) % slides.length;
       slider.scrollTo({
-        left: scrollAmount,
+        left: slides[currentIndex].offsetLeft,
         behavior: 'smooth'
       });
-    }, 1000); // every 1 second
+    }, 2000); // 2-second interval
   </script>
 
 </body>
