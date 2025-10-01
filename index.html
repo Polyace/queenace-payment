@@ -62,6 +62,7 @@
       -webkit-overflow-scrolling: touch;
       gap: 1rem;
       padding: 1rem 0;
+      scroll-behavior: smooth;
     }
 
     .slider::-webkit-scrollbar {
@@ -76,15 +77,6 @@
       border-radius: 12px;
       padding: 1rem;
       font-size: 1rem;
-    }
-
-    .features {
-      margin-top: 1rem;
-    }
-
-    .features h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
     }
 
     .about, .why-choose {
@@ -105,14 +97,6 @@
       font-size: 0.95rem;
     }
 
-    footer {
-      background-color: #000;
-      color: #ffd700;
-      text-align: center;
-      padding: 1rem 0;
-      font-size: 0.9rem;
-    }
-
     .reviews {
       padding: 2rem 1rem;
     }
@@ -126,6 +110,14 @@
       text-align: left;
       font-style: italic;
     }
+
+    footer {
+      background-color: #000;
+      color: #ffd700;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -136,7 +128,7 @@
 
   <section class="features">
     <h2>Our Features</h2>
-    <div class="slider">
+    <div class="slider" id="featureSlider">
       <div class="slide-box">⚡ Instant Cashout</div>
       <div class="slide-box">🔐 Secure Payments</div>
       <div class="slide-box">🕒 24/7 Available</div>
@@ -178,6 +170,25 @@
   <footer>
     © 2025 QueenAce. All rights reserved.
   </footer>
+
+  <script>
+    const slider = document.getElementById('featureSlider');
+    let scrollAmount = 0;
+
+    setInterval(() => {
+      const slideWidth = slider.children[0].offsetWidth + 16; // Including gap
+      scrollAmount += slideWidth;
+
+      if (scrollAmount >= slider.scrollWidth - slider.offsetWidth) {
+        scrollAmount = 0;
+      }
+
+      slider.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }, 1000); // every 1 second
+  </script>
 
 </body>
 </html>
