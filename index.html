@@ -73,6 +73,7 @@
       max-width: 400px;
     }
 
+    .feature-buttons a,
     .feature-buttons button {
       padding: 15px;
       font-size: 18px;
@@ -83,8 +84,11 @@
       color: #000;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: block;
     }
 
+    .feature-buttons a:hover,
     .feature-buttons button:hover {
       background-color: #ffcc00;
     }
@@ -171,8 +175,8 @@
   </div>
 
   <div class="feature-buttons">
-    <button>💰 Deposit Here</button>
-    <button>💬 Live Chat</button>
+    <a href="https://checkout.polypay.digital/b/00w8wI4gZdaf4bg6bG2g007" target="_blank">💰 Deposit Here</a>
+    <button onclick="alert('Live Chat feature coming soon!')">💬 Live Chat</button>
   </div>
 
   <div class="about">
