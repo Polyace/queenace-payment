@@ -104,7 +104,7 @@
       color: #ffffff;
     }
 
-    /* Review Section */
+    /* Reviews Section */
     .reviews {
       background-color: #141861;
       padding: 30px 20px;
@@ -136,6 +136,25 @@
     .review-text.active {
       opacity: 1;
     }
+
+    /* Footer Section */
+    footer {
+      background-color: #000;
+      padding: 20px 0;
+      color: #aaa;
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer span {
+      color: #FFD700;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -165,7 +184,6 @@
     </p>
   </div>
 
-  <!-- Reviews Section -->
   <div class="reviews">
     <h2>What Our Customers Say About Us</h2>
     <div class="review-slider">
@@ -175,6 +193,11 @@
       <div class="review-text">"Best online gaming experience. Highly recommended to all my friends." – Michael B.</div>
     </div>
   </div>
+
+  <footer>
+    <p>© <span id="year"></span> QueenAce Casino</p>
+    <p><span>Built for Winners.</span></p>
+  </footer>
 
   <script>
     // Feature slider
@@ -194,6 +217,9 @@
       rIndex = (rIndex + 1) % reviews.length;
       reviews[rIndex].classList.add('active');
     }, 3000); // every 3 seconds
+
+    // Auto update year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
 </body>
