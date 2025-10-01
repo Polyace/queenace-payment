@@ -2,111 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QueenAce Casino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background-color: #0b0f2e;
-      color: #fff;
-      padding: 0 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b0c2a;
+      color: #ffffff;
+      line-height: 1.6;
     }
 
     header {
-      background: #000;
-      padding: 20px;
+      background-color: #000;
       text-align: center;
+      padding: 1rem 0;
     }
 
     header h1 {
-      color: #FFD700;
-      font-size: 26px;
+      color: #ffd700;
       margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .btn-yellow {
+      background-color: #ffd700;
+      color: #000;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 10px auto;
+      width: 90%;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-yellow:hover {
+      transform: scale(1.02);
     }
 
     section {
+      padding: 1rem;
       text-align: center;
-      padding: 30px 0;
     }
 
     h2 {
-      color: #fff;
-      font-size: 22px;
-      margin-bottom: 24px;
+      color: #ffffff;
+      margin-bottom: 1rem;
     }
 
-    .feature-grid {
+    .slider {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 32px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 1rem;
+      padding: 1rem 0;
     }
 
-    .feature {
-      background-color: transparent;
-      border: 2px solid #FFD700;
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide-box {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      background-color: #121441;
+      border: 2px solid #ffd700;
       border-radius: 12px;
-      padding: 12px 24px;
-      font-size: 16px;
-      color: #fff;
-      min-width: 160px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 1rem;
+      font-size: 1rem;
     }
 
-    .feature:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #FFD700;
+    .features {
+      margin-top: 1rem;
     }
 
-    .cta-button {
-      background-color: #FFD700;
-      color: #000;
-      font-weight: 600;
-      padding: 14px 24px;
+    .features h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .about, .why-choose {
+      background-color: #121441;
+      padding: 2rem 1rem;
       border-radius: 12px;
-      border: none;
-      font-size: 16px;
-      margin: 10px 0;
+      margin: 1rem auto;
       width: 90%;
-      max-width: 300px;
-      display: inline-block;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .cta-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #FFD700;
-      cursor: pointer;
+    .why-choose ul {
+      list-style: none;
+      padding: 0;
     }
 
-    .section-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-top: 40px;
-    }
-
-    .info-text {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #ccc;
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-      padding: 0 10px;
+    .why-choose li {
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
       background-color: #000;
-      color: #FFD700;
-      font-size: 14px;
+      color: #ffd700;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .reviews {
+      padding: 2rem 1rem;
+    }
+
+    .review-box {
+      background-color: #121441;
+      border-left: 4px solid #ffd700;
+      padding: 1rem;
+      margin: 0.7rem 0;
+      border-radius: 8px;
+      text-align: left;
+      font-style: italic;
     }
   </style>
 </head>
@@ -116,35 +134,45 @@
     <h1>🎰 QueenAce Casino</h1>
   </header>
 
-  <section>
+  <section class="features">
     <h2>Our Features</h2>
-    <div class="feature-grid">
-      <div class="feature">⚡ Instant Cashout</div>
-      <div class="feature">🔐 Secure Payments</div>
-      <div class="feature">🕓 24/7 Available</div>
-      <div class="feature">🎲 Trusted Online Gaming</div>
+    <div class="slider">
+      <div class="slide-box">⚡ Instant Cashout</div>
+      <div class="slide-box">🔐 Secure Payments</div>
+      <div class="slide-box">🕒 24/7 Available</div>
+      <div class="slide-box">🎲 Trusted Online Gaming</div>
     </div>
-
-    <a href="https://checkout.polypay.digital/b/00w8wI4gZdaf4bg6bG2g007" class="cta-button">💰 Deposit Here</a>
-    <a href="https://wa.me/yourwhatsapplink" class="cta-button">💬 Live Chat</a>
   </section>
 
-  <section>
-    <h2 class="section-title" id="about">About Us</h2>
-    <p class="info-text">
-      QueenAce Casino offers a premium online gaming experience with instant cashouts, secure deposits, and live chat support 24/7. Trusted by players worldwide, we’re committed to fast, fair, and fun entertainment.
+  <a class="btn-yellow" href="https://checkout.polypay.digital/b/00w8wI4gZdaf4bg6bG2g007">💰 Deposit Here</a>
+  <a class="btn-yellow" href="#">💬 Live Chat</a>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      QueenAce Casino offers a premium online gaming experience with instant cashouts,
+      secure deposits, and live chat support 24/7. Trusted by players worldwide,
+      we’re committed to fast, fair, and fun entertainment.
     </p>
   </section>
 
-  <section>
-    <h2 class="section-title">Why Choose Us</h2>
-    <p class="info-text">
-      ✅ Instant Payouts <br>
-      ✅ Global Access <br>
-      ✅ Trusted by 10K+ Players <br>
-      ✅ Secure Gateway Powered by Stripe <br>
-      ✅ 100% Transparency & 24/7 Live Support
-    </p>
+  <section class="why-choose">
+    <h2>Why Choose Us</h2>
+    <ul>
+      <li>✅ Instant Payouts</li>
+      <li>✅ Global Access</li>
+      <li>✅ Trusted by 10K+ Players</li>
+      <li>✅ Secure Gateway Powered by Stripe</li>
+      <li>✅ 100% Transparency & 24/7 Live Support</li>
+    </ul>
+  </section>
+
+  <section class="reviews">
+    <h2>💬 What Our Users Say</h2>
+    <div class="review-box">"Smooth deposit and fast cashout! Trusted platform. 5⭐" – James from TX</div>
+    <div class="review-box">"Support team was super helpful. Got my winnings in minutes!" – Emily W.</div>
+    <div class="review-box">"Love the UI and games. Everything works perfectly." – Raj P.</div>
+    <div class="review-box">"I play daily. It’s easy and fun!" – Sophie B.</div>
   </section>
 
   <footer>
