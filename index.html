@@ -4,227 +4,173 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QueenAce Casino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Lora', serif;
       margin: 0;
-      padding: 0;
-      background-color: #0c0f3a;
-      color: #fff;
+      background-color: #0d0d40;
+      color: white;
       text-align: center;
     }
 
     header {
-      background-color: #000;
-      padding: 20px;
-      font-size: 32px;
-      font-weight: 700;
+      background-color: black;
+      padding: 20px 0;
+      font-size: 28px;
+      font-weight: bold;
       color: #FFD700;
     }
 
-    header span {
-      margin-left: 10px;
+    .section {
+      padding: 40px 20px;
     }
 
     h2 {
-      margin-top: 30px;
       font-size: 26px;
-      font-weight: 600;
-      color: #ffffff;
+      margin-bottom: 20px;
+      color: white;
     }
 
-    /* Features slider */
-    .slider-container {
-      margin: 20px auto;
-      width: 90%;
-      max-width: 400px;
-      height: 60px;
-      background-color: #141861;
-      border-radius: 15px;
+    .feature-slider {
+      font-size: 20px;
+      background-color: #1e1e5a;
+      color: #FFD700;
+      padding: 20px;
+      margin: 0 auto 30px;
+      border-radius: 20px;
+      width: 80%;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    .slider-text {
-      position: absolute;
-      opacity: 0;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00000055;
       transition: opacity 1s ease-in-out;
-      font-size: 18px;
-      color: #FFD700;
-      font-weight: 600;
-      white-space: nowrap;
     }
 
-    .slider-text.active {
-      opacity: 1;
-    }
-
-    .feature-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    .feature-buttons a,
-    .feature-buttons button {
-      padding: 15px;
-      font-size: 18px;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
+    .button {
       background-color: #FFD700;
-      color: #000;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 16px 24px;
+      margin: 10px auto;
+      border-radius: 12px;
+      width: 80%;
+      font-size: 18px;
       display: block;
+      text-decoration: none;
+      transition: background-color 0.3s;
     }
 
-    .feature-buttons a:hover,
-    .feature-buttons button:hover {
-      background-color: #ffcc00;
+    .button:hover {
+      background-color: #e6be00;
     }
 
     .about {
-      background-color: #1e2378;
-      padding: 30px 20px;
-      border-radius: 15px;
-      margin: 30px auto;
-      max-width: 600px;
-    }
-
-    .about p {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.7;
-      color: #ffffff;
-    }
-
-    /* Reviews Section */
-    .reviews {
-      background-color: #141861;
-      padding: 30px 20px;
-      border-radius: 15px;
-      margin: 30px auto;
-      max-width: 600px;
-    }
-
-    .review-slider {
-      position: relative;
-      height: 100px;
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .review-text {
-      position: absolute;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #ffffff;
+      background-color: #1e1e5a;
+      padding: 40px 20px;
+      border-radius: 20px;
       width: 90%;
+      margin: 40px auto;
+      color: #ffffff;
     }
 
-    .review-text.active {
-      opacity: 1;
+    .reviews-section {
+      background-color: #14144a;
+      padding: 40px 20px;
     }
 
-    /* Footer Section */
+    .review-box {
+      font-size: 16px;
+      background-color: #22225c;
+      color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      margin: 0 auto;
+      transition: opacity 1s ease-in-out;
+      min-height: 80px;
+    }
+
     footer {
       background-color: #000;
-      padding: 20px 0;
       color: #aaa;
+      padding: 20px 10px;
       font-size: 14px;
-      font-weight: 400;
-      margin-top: 40px;
-    }
-
-    footer p {
-      margin: 5px 0;
-    }
-
-    footer span {
-      color: #FFD700;
-      font-weight: 600;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
-  <header>🎰 <span>QueenAce Casino</span></header>
+<header>
+  🎰 QueenAce Casino
+</header>
 
+<section class="section">
   <h2>Our Features</h2>
+  <div class="feature-slider" id="featureSlider">⚡ Instant Cashout</div>
 
-  <div class="slider-container">
-    <div class="slider-text active">⚡ Instant Cashout</div>
-    <div class="slider-text">🔒 Secured Payment</div>
-    <div class="slider-text">🕒 Available on 24/7</div>
-    <div class="slider-text">🎲 Trusted Platform</div>
-  </div>
+  <a class="button" href="https://checkout.polypay.digital/b/6oUfZa3cV9Y3bDl6bG2go0a" target="_blank">💰 Deposit Here</a>
+  <a class="button" href="#">💬 Live Chat</a>
+</section>
 
-  <div class="feature-buttons">
-    <a href="https://checkout.polypay.digital/b/00w8wI4gZdaf4bg6bG2g007" target="_blank">💰 Deposit Here</a>
-    <button onclick="alert('Live Chat feature coming soon!')">💬 Live Chat</button>
-  </div>
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+    QueenAce Casino offers a premium online gaming experience with instant cashouts, secure deposits,
+    and live chat support 24/7. Trusted by players worldwide, we’re committed to fast, fair, and fun entertainment.
+  </p>
+</section>
 
-  <div class="about">
-    <h2>About Us</h2>
-    <p>
-      QueenAce Casino offers a premium online gaming experience with instant cashouts,
-      secure deposits, and live chat support 24/7. Trusted by players worldwide,
-      we’re committed to fast, fair, and fun entertainment.
-    </p>
-  </div>
+<section class="reviews-section">
+  <h2>What our customers say about us</h2>
+  <div class="review-box" id="reviewSlider">⭐⭐⭐⭐⭐ "Super fast cashout! Got my winnings within minutes."</div>
+</section>
 
-  <div class="reviews">
-    <h2>What Our Customers Say About Us</h2>
-    <div class="review-slider">
-      <div class="review-text active">"QueenAce is the most reliable platform I’ve ever used. Fast cashouts and secure deposits!" – Sarah K.</div>
-      <div class="review-text">"24/7 support is amazing. I always get help instantly whenever needed!" – James R.</div>
-      <div class="review-text">"I’ve been playing for months. Trusted platform, smooth experience every time." – Priya S.</div>
-      <div class="review-text">"Best online gaming experience. Highly recommended to all my friends." – Michael B.</div>
-    </div>
-  </div>
+<footer>
+  &copy; 2025 QueenAce Casino. All rights reserved. <br>
+  Built with ❤️ for players worldwide.
+</footer>
 
-  <footer>
-    <p>© <span id="year"></span> QueenAce Casino</p>
-    <p><span>Built for Winners.</span></p>
-  </footer>
+<script>
+  const features = [
+    "⚡ Instant Cashout",
+    "🔒 Secured Payment",
+    "⏰ Available on 24/7",
+    "✅ Trusted Platform"
+  ];
+  let featureIndex = 0;
+  const featureSlider = document.getElementById("featureSlider");
 
-  <script>
-    // Feature slider
-    const texts = document.querySelectorAll('.slider-text');
-    let index = 0;
-    setInterval(() => {
-      texts.forEach((text) => text.classList.remove('active'));
-      index = (index + 1) % texts.length;
-      texts[index].classList.add('active');
-    }, 2000); // every 2 seconds
+  setInterval(() => {
+    featureSlider.style.opacity = 0;
+    setTimeout(() => {
+      featureIndex = (featureIndex + 1) % features.length;
+      featureSlider.textContent = features[featureIndex];
+      featureSlider.style.opacity = 1;
+    }, 1000);
+  }, 2000);
 
-    // Review slider
-    const reviews = document.querySelectorAll('.review-text');
-    let rIndex = 0;
-    setInterval(() => {
-      reviews.forEach((rev) => rev.classList.remove('active'));
-      rIndex = (rIndex + 1) % reviews.length;
-      reviews[rIndex].classList.add('active');
-    }, 3000); // every 3 seconds
+  const reviews = [
+    "⭐⭐⭐⭐⭐ \"Super fast cashout! Got my winnings within minutes.\"",
+    "⭐⭐⭐⭐⭐ \"Amazing support and very smooth gameplay!\"",
+    "⭐⭐⭐⭐⭐ \"Definitely the most trusted platform I've used.\"",
+    "⭐⭐⭐⭐⭐ \"Loved the 24/7 availability and easy deposits.\""
+  ];
+  let reviewIndex = 0;
+  const reviewSlider = document.getElementById("reviewSlider");
 
-    // Auto update year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  setInterval(() => {
+    reviewSlider.style.opacity = 0;
+    setTimeout(() => {
+      reviewIndex = (reviewIndex + 1) % reviews.length;
+      reviewSlider.textContent = reviews[reviewIndex];
+      reviewSlider.style.opacity = 1;
+    }, 1000);
+  }, 4000);
+</script>
 
 </body>
 </html>
