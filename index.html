@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>QueenAce Casino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #0b0c2a;
       color: #ffffff;
       line-height: 1.6;
@@ -34,15 +35,15 @@
       margin: 10px auto;
       width: 90%;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       text-decoration: none;
       display: block;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
     }
 
     .btn-yellow:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     section {
@@ -52,31 +53,42 @@
 
     h2 {
       color: #ffffff;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
     }
 
-    .slider {
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      height: 120px;
+      width: 100%;
+      max-width: 95%;
+      margin: auto;
+      border-radius: 16px;
+    }
+
+    .slider-track {
       display: flex;
-      overflow-x: hidden;
-      scroll-snap-type: x mandatory;
-      gap: 1rem;
-      padding: 1rem 0;
-      scroll-behavior: smooth;
+      transition: transform 0.6s ease-in-out;
     }
 
-    .slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    .slide-box {
+    .slide {
       flex: 0 0 100%;
-      scroll-snap-align: center;
-      background-color: #121441;
-      border: 2px solid #ffd700;
-      border-radius: 12px;
-      padding: 1.5rem;
+      background-color: #14164d;
+      color: #ffd700;
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 600;
+      padding: 1.8rem;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide span {
+      font-size: 1.3rem;
+      margin-right: 8px;
     }
 
     .about, .why-choose {
@@ -90,11 +102,11 @@
     .why-choose ul {
       list-style: none;
       padding: 0;
+      font-size: 0.95rem;
     }
 
     .why-choose li {
       margin-bottom: 0.6rem;
-      font-size: 0.95rem;
     }
 
     .reviews {
@@ -126,13 +138,15 @@
     <h1>🎰 QueenAce Casino</h1>
   </header>
 
-  <section class="features">
+  <section>
     <h2>Our Features</h2>
-    <div class="slider" id="featureSlider">
-      <div class="slide-box">⚡ Instant Cashout</div>
-      <div class="slide-box">🔐 Secured Payment</div>
-      <div class="slide-box">🕒 Available on 24/7</div>
-      <div class="slide-box">🎲 Trusted Platform</div>
+    <div class="slider-container">
+      <div class="slider-track" id="featureSlider">
+        <div class="slide"><span>⚡</span>Instant Cashout</div>
+        <div class="slide"><span>🔐</span>Secured Payment</div>
+        <div class="slide"><span>🕒</span>Available on 24/7</div>
+        <div class="slide"><span>🎲</span>Trusted Platform</div>
+      </div>
     </div>
   </section>
 
@@ -174,15 +188,12 @@
   <script>
     const slider = document.getElementById('featureSlider');
     const slides = slider.children;
-    let currentIndex = 0;
+    let index = 0;
 
     setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      slider.scrollTo({
-        left: slides[currentIndex].offsetLeft,
-        behavior: 'smooth'
-      });
-    }, 2000); // 2-second interval
+      index = (index + 1) % slides.length;
+      slider.style.transform = `translateX(-${index * 100}%)`;
+    }, 2000);
   </script>
 
 </body>
