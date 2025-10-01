@@ -34,6 +34,7 @@
       color: #ffffff;
     }
 
+    /* Features slider */
     .slider-container {
       margin: 20px auto;
       width: 90%;
@@ -102,6 +103,39 @@
       line-height: 1.7;
       color: #ffffff;
     }
+
+    /* Review Section */
+    .reviews {
+      background-color: #141861;
+      padding: 30px 20px;
+      border-radius: 15px;
+      margin: 30px auto;
+      max-width: 600px;
+    }
+
+    .review-slider {
+      position: relative;
+      height: 100px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .review-text {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ffffff;
+      width: 90%;
+    }
+
+    .review-text.active {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -131,18 +165,35 @@
     </p>
   </div>
 
+  <!-- Reviews Section -->
+  <div class="reviews">
+    <h2>What Our Customers Say About Us</h2>
+    <div class="review-slider">
+      <div class="review-text active">"QueenAce is the most reliable platform I’ve ever used. Fast cashouts and secure deposits!" – Sarah K.</div>
+      <div class="review-text">"24/7 support is amazing. I always get help instantly whenever needed!" – James R.</div>
+      <div class="review-text">"I’ve been playing for months. Trusted platform, smooth experience every time." – Priya S.</div>
+      <div class="review-text">"Best online gaming experience. Highly recommended to all my friends." – Michael B.</div>
+    </div>
+  </div>
+
   <script>
+    // Feature slider
     const texts = document.querySelectorAll('.slider-text');
     let index = 0;
-
     setInterval(() => {
-      texts.forEach((text, i) => {
-        text.classList.remove('active');
-      });
-
+      texts.forEach((text) => text.classList.remove('active'));
       index = (index + 1) % texts.length;
       texts[index].classList.add('active');
     }, 2000); // every 2 seconds
+
+    // Review slider
+    const reviews = document.querySelectorAll('.review-text');
+    let rIndex = 0;
+    setInterval(() => {
+      reviews.forEach((rev) => rev.classList.remove('active'));
+      rIndex = (rIndex + 1) % reviews.length;
+      reviews[rIndex].classList.add('active');
+    }, 3000); // every 3 seconds
   </script>
 
 </body>
