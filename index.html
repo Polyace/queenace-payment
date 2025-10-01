@@ -1,127 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QueenAce Casino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0c2b;
-      color: white;
-      text-align: center;
+      font-family: 'Rubik', sans-serif;
+      background-color: #0b0d2c;
+      color: #fff;
+      overflow-x: hidden;
     }
 
     header {
       background-color: #000;
-      padding: 20px 10px;
-      font-size: 26px;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
       font-weight: bold;
-      color: gold;
+      color: #f1c40f;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
 
-    button {
-      background-color: gold;
+    header span {
+      margin-left: 10px;
+    }
+
+    .container {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .feature {
+      background-color: transparent;
+      border: 2px solid #f1c40f;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 15px;
+      min-width: 140px;
+      text-align: center;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      background-color: #f1c40f;
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    .btn-group {
+      margin: 25px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn {
+      background-color: #f1c40f;
       color: #000;
       border: none;
-      padding: 14px 26px;
-      margin: 10px auto;
+      padding: 15px 30px;
       border-radius: 12px;
-      font-size: 18px;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 1rem;
       cursor: pointer;
-      width: 85%;
-      display: block;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .icon-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 10px;
+    .btn:hover {
+      background-color: #ffe600;
+      transform: scale(1.05);
     }
 
-    .icon-buttons button {
-      background-color: transparent;
-      color: white;
-      border: 2px solid gold;
-      margin: 10px;
-      width: 170px;
-      border-radius: 12px;
-      font-size: 16px;
-      padding: 10px 16px;
-    }
-
-    section {
-      margin: 30px 20px;
-    }
-
-    h2 {
-      font-size: 24px;
-      color: white;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 16px;
-      color: #ccc;
-    }
-
+    .about,
     .games {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .games-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 15px;
       margin-top: 20px;
     }
 
     .game-box {
-      background-color: white;
+      background: #fff;
       color: #000;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: bold;
-      border: 2px solid gold;
-      min-width: 110px;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+      transition: transform 0.2s;
+    }
+
+    .game-box:hover {
+      transform: scale(1.05);
     }
 
     footer {
-      margin-top: 40px;
-      padding: 20px 10px;
-      background-color: black;
-      color: gold;
-      font-size: 14px;
+      margin-top: 60px;
+      padding: 15px;
+      background: #000;
+      text-align: center;
+      color: #f1c40f;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <header>🎰 QueenAce Casino</header>
+<header>
+  🎰 <span>QueenAce Casino</span>
+</header>
 
-  <a href="https://checkout.polypay.digital/b/00w8wI4gZdaf4bg6bG2go07">
-    <button>💰 Deposit Here</button>
-  </a>
-
-  <a href="https://wa.me/YOURNUMBERHERE" target="_blank">
-    <button>💬 Live Chat</button>
-  </a>
-
-  <div class="icon-buttons">
-    <button>⚡ Instant Cashout</button>
-    <button>🔒 Secure Payments</button>
-    <button>🕒 24/7 Available</button>
-    <button>🎲 Trusted Online Gaming</button>
+<div class="container">
+  <h2 class="section-title">Our Features</h2>
+  <div class="features">
+    <div class="feature">⚡ Instant Cashout</div>
+    <div class="feature">🔐 Secure Payments</div>
+    <div class="feature">🕒 24/7 Available</div>
+    <div class="feature">🎲 Trusted Online Gaming</div>
   </div>
 
-  <section>
-    <h2>About Us</h2>
-    <p>QueenAce Casino offers a premium online gaming experience with instant cashouts, secure deposits, and live chat support 24/7. Trusted by players worldwide, we’re committed to fast, fair, and fun entertainment.</p>
-  </section>
+  <div class="btn-group">
+    <a class="btn" href="https://checkout.polypay.digital/b/00w8wI4gZdaf4bg6bG2g007" target="_blank">💰 Deposit Here</a>
+    <a class="btn" href="https://tawk.to/chat/64e4c7a2cc26a871b02f24b5/1h8tjqmg8" target="_blank">💬 Live Chat</a>
+  </div>
 
-  <section>
-    <h2>Games We Offer</h2>
-    <div class="games">
+  <div class="about">
+    <h2 class="section-title">About Us</h2>
+    <p>
+      QueenAce Casino offers a premium online gaming experience with instant cashouts, secure deposits, and live chat support 24/7. Trusted by players worldwide, we’re committed to fast, fair, and fun entertainment.
+    </p>
+  </div>
+
+  <div class="games">
+    <h2 class="section-title">Games We Offer</h2>
+    <div class="games-list">
       <div class="game-box">Orion Star</div>
       <div class="game-box">Juwa</div>
       <div class="game-box">Fire Kirin</div>
@@ -129,9 +176,12 @@
       <div class="game-box">Skillmine</div>
       <div class="game-box">Milky Way</div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <footer>© 2025 QueenAce. All rights reserved.</footer>
+<footer>
+  © 2025 QueenAce. All rights reserved.
+</footer>
 
 </body>
 </html>
